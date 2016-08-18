@@ -74,7 +74,16 @@ namespace ZabbixApi.Entities
         [JsonConverter(typeof(IntToBoolConverter))]
         public bool useip { get; set; }
 
-        #endregion 
+        /// <summary>
+        /// Whether to use bulk SNMP requests.
+        /// 
+        /// Possible values are:
+        /// 0 - don't use bulk requests;
+        /// 1 - (default) use bulk requests. 
+        /// </summary>
+        public BulkSNMP? bulk { get; set; }
+
+        #endregion
 
         #region Associations
 
@@ -98,6 +107,12 @@ namespace ZabbixApi.Entities
             SNMP = 2,
             IPMI = 3,
             JMX = 4
+        }
+
+        public enum BulkSNMP
+        {
+            NoBulk = 0,
+            Bulk = 1,
         }
 
         #endregion
